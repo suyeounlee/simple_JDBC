@@ -1,0 +1,36 @@
+drop sequence albumseq;
+create sequence albumseq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 100;
+
+drop table albums;
+create table albums (
+num number primary key,
+song varchar2(30) not null,
+singer varchar2(30) not null,
+company varchar2(20) not null,
+price number default 0, 
+release_day date default sysdate
+);
+
+SELECT * FROM nls_session_parameters WHERE PARAMETER LIKE '%DATE%' OR PARAMETER LIKE '%LANG%';
+alter session set NLS_DATE_FORMAT='RR/MM/DD';
+
+
+insert into albums values(albumseq.nextval, 'Moscow Mule', 'Bad bunny', 'Rimas', 15, '2022-05-06');
+insert into albums values(albumseq.nextval, 'La Bachata', 'MTurizo', 'Cachos', 20, '2020-07-06');
+insert into albums values(albumseq.nextval, 'Bachata Rosa', 'Chino', 'Nacho', 13, '2021-03-06');
+insert into albums values(albumseq.nextval, 'Calma', 'Farruko', 'Rico', 11, '2020-05-06');
+insert into albums values(albumseq.nextval, 'Fantasias', 'Rauw', 'Alejandro', 18, '2019-03-06');
+insert into albums values(albumseq.nextval, 'Dynamite', 'BTS', 'Bang', 21, '2018-03-06');
+insert into albums values(albumseq.nextval, 'Mia', 'Bad Bunny', 'Drake', 12, '2018-03-06');
+insert into albums values(albumseq.nextval, 'Caramelo', 'Ozuna', 'Dominica', 15, '2018-03-06');
+
+commit;
+
+	col song for a20
+	col singer for a10
+	col company for a10
+	select * from albums;
