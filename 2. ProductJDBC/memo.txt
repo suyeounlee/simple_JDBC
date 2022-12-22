@@ -1,0 +1,29 @@
+drop sequence prdseq;
+create sequence prdseq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+drop table products;
+create table products (
+id number primary key,
+name varchar2(30),
+stock number,
+price number,
+category varchar2(30),
+inputdate date default sysdate
+);
+
+insert into products values(prdseq.nextval, 'mp3', 20, 100, 'IT', default);
+insert into products values(prdseq.nextval, 'Iphone13', 300, 1100, 'IT', default);
+insert into products values(prdseq.nextval, 'Galaxy S11', 400, 1300, 'IT', default);
+insert into products values(prdseq.nextval, 'TV', 40, 1000, 'IT', default);
+insert into products values(prdseq.nextval, 'Computer', 20, 800, 'IT', default);
+insert into products values(prdseq.nextval, 'Mac', 20, 1400, 'IT', default);
+
+commit;
+col name for a10
+col category for a10
+
+select * from products;
