@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+     
 
 public class Select {
 
@@ -24,7 +24,7 @@ public class Select {
 			Connection conn = DriverManager.getConnection(url, id, pw);
 			System.out.println("Connection Success");
 
-			String sql = "select * from test"; //commit after insert rows.
+			String sql = "select * from test order by num asc"; //commit after insert rows.
 
 			//3
 			PreparedStatement ps = conn.prepareStatement(sql); 
