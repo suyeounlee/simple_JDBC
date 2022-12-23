@@ -1,0 +1,66 @@
+drop sequence memseq;
+create sequence memseq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+drop table members;
+create table members (
+num number primary key,
+id varchar2(20),
+pw varchar2(20),
+name varchar2(20)
+);
+
+insert into members values(memseq.nextval, 'mana', 'mana123', 'Sergio');
+
+commit;
+
+col num for 5
+col id for a10
+col pw for a10
+
+select * from members;
+
+------------------------------------------------------
+drop sequence cafeseq;
+create sequence cafeseq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+drop table coffee;
+create table coffee (
+id number primary key,
+name varchar2(30),
+origin varchar2(20),
+price number,
+tasting varchar2(30),
+roasting date default sysdate
+);
+
+SELECT * FROM nls_session_parameters WHERE PARAMETER LIKE '%DATE%' OR PARAMETER LIKE '%LANG%';
+alter session set NLS_DATE_FORMAT='RR/MM/DD';
+
+insert into coffee values(cafeseq.nextval, 'Antigua', 'Guatemala', 11, 'cacao', '2022-10-05');
+insert into coffee values(cafeseq.nextval, 'Managua', 'Nicaragua', 15, 'floral', '2022-9-05');
+insert into coffee values(cafeseq.nextval, 'Oaxaca', 'Mexico', 10, 'almond', '2022-12-05');
+insert into coffee values(cafeseq.nextval, 'Santos', 'Brazil', 16, 'cacao', '2022-11-05');
+insert into coffee values(cafeseq.nextval, 'Juan Valdez', 'Colombia', 13, 'vanilla', '2022-10-10');
+insert into coffee values(cafeseq.nextval, 'Salvador', 'R.Dominica', 9, 'orange', '2022-09-25');
+insert into coffee values(cafeseq.nextval, 'Tica', 'Costa Rica', 10, 'cacao', '2022-11-30');
+insert into coffee values(cafeseq.nextval, 'Quito', 'Ecuador', 11, 'cacao', '2022-12-25');
+
+
+commit;
+col id for 99
+col price for 999
+col name for a15
+col origin for a10
+col tasting for a10
+col roasting for a10
+
+select * from coffee;
+
