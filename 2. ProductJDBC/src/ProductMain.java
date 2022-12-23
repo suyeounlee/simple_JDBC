@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//project right click -> properties -> Library -> ClassPath -> Add External JARs -> ojdbc7.jar file
 public class ProductMain {
 
 	Scanner sc = new Scanner(System.in);
